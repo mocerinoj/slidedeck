@@ -1,0 +1,103 @@
+{
+  "slides": [
+    {
+      "id": 1,
+      "title": "Slide 1",
+      "thumbnail": "http://placehold.it/350x250/00CC00/ffffff",
+      "thumbnail_lg": "http://placehold.it/550x450/00CC00/ffffff",
+      "description": "This is a great slide!",
+      "tags": [
+        "history",
+        "pe",
+        "science",
+        "green"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Slide 2",
+      "thumbnail": "http://placehold.it/350x250/0066FF/ffffff",
+      "thumbnail_lg": "http://placehold.it/550x450/0066FF/ffffff",
+      "description": "This is a great slide!",
+      "tags": [
+        "medical",
+        "science",
+        "blue"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Slide 3",
+      "thumbnail": "http://placehold.it/350x250/ff0000/fffff",
+      "thumbnail_lg": "http://placehold.it/550x450/ff0000/fffff",
+      "description": "This is a great slide!",
+      "tags": [
+        "math",
+        "science",
+        "red"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Slide 4",
+      "thumbnail": "http://placehold.it/350x250/ff0000/ffffff",
+      "thumbnail_lg": "http://placehold.it/550x450/ff0000/ffffff",
+      "description": "This is a great slide!",
+      "tags": [
+        "english",
+        "gym",
+        "red"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Slide 5",
+      "thumbnail": "http://placehold.it/350x250/FF9900/fffff",
+      "thumbnail_lg": "http://placehold.it/550x450/FF9900/fffff",
+      "description": "This is a great slide!",
+      "tags": [
+        "history",
+        "calculus",
+        "orange"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Slide 6",
+      "thumbnail": "http://placehold.it/350x250/FFFF66/000000",
+      "thumbnail_lg": "http://placehold.it/550x450/FFFF66/000000",
+      "description": "This is a great slide!",
+      "tags": [
+        "math",
+        "english",
+        "yellow"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Slide 7",
+      "thumbnail": "http://placehold.it/350x250/000000/ffffff",
+      "thumbnail_lg": "http://placehold.it/550x450/000000/ffffff",
+      "description": "This is a great slide!",
+      "tags": [
+        "math",
+        "english",
+        "physics",
+        "black"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Slide 8",
+      "thumbnail": "http://placehold.it/350x250/ff0000/ffffff",
+      "thumbnail_lg": "http://placehold.it/550x450/ff0000/ffffff",
+      "description": "This is a great slide!",
+      "tags": [
+        "health",
+        "photography",
+        "physics",
+        "red"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.slider.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+</head>
+<body>
+
+  <header id="slide-header">
+    <figure>
+      <label>Select a Deck</label>
+      <select id="deck-selector"></select>
+    </figure>
+    <figure>
+      <label>Thumbnail Size</label>
+      <input id="thumb_sizer" data-slider-id='thumb_sizer_slider' type="text" data-slider-min="5" data-slider-max="50" data-slider-step="1" data-slider-value="18"/>
+    </figure>
+    <figure class="save">
+      <form class="form-inline">
+        <input type="text" class="form-control" placeholder="My awesome deck" name="name"/>
+        <button class="btn btn-primary ">Save</button>
+      </form>
+    </figure>
+  </header>
+
+  <div id="slide_preview">
+    <!--<div class="ui-resizable-handle ui-resizable-e ui-resizable-w"></div>-->
+    <div class="preview"></div>
+    <button class="btn btn-default hide largerView" data-toggle="modal" data-target="#largerPreview"><span class="glyphicon glyphicon-search"></span> Larger View</button>
+    <button class="btn btn-default hide toggle"></button>
+  </div>
+  <div id="slides" class="slideDeck"><div class="slides"></div></div>
+  <div id="optional_slides" class="slideDeck">
+    <figure class="search">
+      <input type="text" class="form-control" placeholder="search...">
+      <label><input type="checkbox" id="show_all_optonal"> Show All</label>
+    </figure>
+    <div class="slides"></div>
+  </div>
+
+  <div class="modal fade" id="largerPreview">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body"><img src=""/></div>
+        <!--<div class="modal-footer"></div>-->
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.slider.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
