@@ -68,6 +68,9 @@ html {
   width:18%;
   position: relative;
 }
+div.slides {
+  height:calc(50% - 30px);
+}
 #optional_slides .slide.optional {
   display:none;
 }
