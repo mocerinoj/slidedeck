@@ -98,6 +98,62 @@
         "physics",
         "red"
       ]
+    },
+    {
+      "id": "g_1",
+      "title": "Group 1",
+      "group": true,
+      "description": "This is a great group!",
+      "tags": [
+        "health",
+        "photography",
+        "physics",
+        "red"
+      ],
+      "slides": [
+        {
+          "id": 7,
+          "title": "Slide 7",
+          "thumbnail": "http://placehold.it/350x250/000000/ffffff",
+          "thumbnail_lg": "http://placehold.it/550x450/000000/ffffff",
+          "description": "This is a great slide!"
+        },
+        {
+          "id": 5,
+          "title": "Slide 5",
+          "thumbnail": "http://placehold.it/350x250/FF9900/fffff",
+          "thumbnail_lg": "http://placehold.it/550x450/FF9900/fffff",
+          "description": "This is a great slide!"
+        }
+      ]
+    },
+    {
+      "id": "g_2",
+      "title": "Group 2",
+      "group": true,
+      "description": "This is a great group!",
+      "tags": [
+        "health",
+        "photography",
+        "physics",
+        "red"
+      ],
+      "slides": [
+        {
+          "id": 7,
+          "title": "Slide 7",
+          "thumbnail": "http://placehold.it/350x250/000000/ffffff",
+          "thumbnail_lg": "http://placehold.it/550x450/000000/ffffff",
+          "description": "This is a great slide!"
+        },
+        {
+          "id": 5,
+          "title": "Slide 5",
+          "thumbnail": "http://placehold.it/350x250/FF9900/fffff",
+          "thumbnail_lg": "http://placehold.it/550x450/FF9900/fffff",
+          "description": "This is a great slide!"
+        }
+      ]
     }
   ]
 }
