@@ -94,6 +94,24 @@ div.slides {
 div.slide {
 
 }
+.slide span.title {
+  margin-top:2px;
+}
+.preview .slide span.title {
+  margin-top:10px;
+}
+.slide.group {
+  position: relative;
+}
+.slide.group img {
+  position: relative;
+}
+.slide.group img:first-of-type {
+  position:absolute;
+  top:0;
+  left:0;
+  transform:rotate(-4deg);
+}
 #slide_preview div.slide {
   min-width:100%; /* for inline styled width on thumb_sizer */
 }
