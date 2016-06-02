@@ -221,9 +221,14 @@ function formatSlide(data, options){
       tags =    ($.isArray(data.tags) ? data.tags.join(",") : data.tags),
       classes = "slide",
       classes = classes + (options.required ? " required" : ""),
+      classes = classes + (data.group ? " group" : ""),
       classes = classes + (options.optional ? " optional" : "");
-  slide.push( $("<img/>").attr("src", data.thumbnail) );
-  //slide.push( $("<i class=''/>") );
+  if(data.group){
+    slide.push( $("<img/>").attr("src", data.slides[1].thumbnail) );
+    slide.push( $("<img/>").attr("src", data.slides[0].thumbnail) );
+  }else{
+    slide.push( $("<img/>").attr("src", data.thumbnail) );
+  }
   slide.push( $("<span/>").addClass("title").text(data.title) );
   slide.push( $("<span/>").addClass("desc").text(data.description) );
   return $("<div/>", {
