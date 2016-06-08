@@ -51,6 +51,12 @@ $(function(){
         // add button'
         preview.find("button.toggle").removeClass("hide").data("slide-id",slide.data("id")).addClass("add-slide").html('<span class="glyphicon glyphicon-plus"></span> Add Slide');
       }
+      // preview group
+      if(preview.find(".group").length > 0){
+        preview.find(".group").prepend('<span class="cycle-next glyphicon glyphicon-chevron-right"></span><span class="cycle-prev glyphicon glyphicon-chevron-left"></span>').cycle({
+          timeout: 0
+        });
+      }
   });
 
   // preview model data transfer
@@ -218,14 +224,20 @@ function loadSlides(){
 
 function formatSlide(data, options){
   var slide =   [],
+      thumbs =  1,
       tags =    ($.isArray(data.tags) ? data.tags.join(",") : data.tags),
       classes = "slide",
       classes = classes + (options.required ? " required" : ""),
       classes = classes + (data.group ? " group" : ""),
       classes = classes + (options.optional ? " optional" : "");
   if(data.group){
-    slide.push( $("<img/>").attr("src", data.slides[1].thumbnail) );
-    slide.push( $("<img/>").attr("src", data.slides[0].thumbnail) );
+    $.each(data.slides, function(i, s){
+      slide.push( $("<img/>").attr({
+        "src": s.thumbnail,
+        "style": "z-index:"+i
+      }) );
+    });
+    thumbs = data.slides.length;
   }else{
     slide.push( $("<img/>").attr("src", data.thumbnail) );
   }
@@ -233,10 +245,12 @@ function formatSlide(data, options){
   slide.push( $("<span/>").addClass("desc").text(data.description) );
   return $("<div/>", {
           "data-tags":          tags,
+          "data-thumbs":        thumbs,
           "data-thumbnail_lg":  data.thumbnail_lg,
           "data-id":            data.id,
           "class":              classes,
           "title":              data.title,
-          "html":               slide
+          "html":               slide,
+          "group":              data.group || false
         });
 }

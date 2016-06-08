@@ -152,6 +152,20 @@
           "thumbnail": "http://placehold.it/350x250/FF9900/fffff",
           "thumbnail_lg": "http://placehold.it/550x450/FF9900/fffff",
           "description": "This is a great slide!"
+        },
+        {
+          "id": 70,
+          "title": "Slide 70",
+          "thumbnail": "http://placehold.it/350x250/cccccc/000000",
+          "thumbnail_lg": "http://placehold.it/550x450/cccccc/000000",
+          "description": "This is a great slide!"
+        },
+        {
+          "id": 50,
+          "title": "Slide 50",
+          "thumbnail": "http://placehold.it/350x250/336699/fffff",
+          "thumbnail_lg": "http://placehold.it/550x450/336699/fffff",
+          "description": "This is a great slide!"
         }
       ]
     }
