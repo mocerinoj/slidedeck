@@ -60,12 +60,12 @@ $(function(){
   });
 
   // preview model data transfer
-  $('#largerPreview').on('show.bs.modal', function (e) {
+  /*$('#largerPreview').on('show.bs.modal', function (e) {
     var modal = $(this),
         slide = $(e.relatedTarget);
     modal.find(".modal-body img").attr("src", slide.data("thumbnail_lg"));
     modal.find(".modal-header h4").text(slide.data("title"));
-  });
+  });*/
 
   // preview add / remove buttons clicks
   $("#slide_preview").on("click",".add-slide",function(){
@@ -76,7 +76,13 @@ $(function(){
     var $this = $(this);
     $("#slides .slides .slide[data-id="+$this.data("slide-id")+"]").appendTo("#optional_slides .slides");
     $this.removeClass("remove-slide").addClass("add-slide").html('<span class="glyphicon glyphicon-plus"></span> Add Slide');
-  });
+  }).on("click", ".preview img", function () {
+    var $this = $(this),
+        modal = $('#largerPreview').modal("show"),
+        slide = $this.closest(".slide");
+    modal.find(".modal-body img").attr("src", $this.data("thumbnail_lg"));
+    modal.find(".modal-header h4").text(slide.attr("title"));
+  });;
 
 
   // thumbnail slizer
@@ -234,12 +240,17 @@ function formatSlide(data, options){
     $.each(data.slides, function(i, s){
       slide.push( $("<img/>").attr({
         "src": s.thumbnail,
-        "style": "z-index:"+i
+        "style": "z-index:"+i,
+        "data-thumbnail_lg": s.thumbnail_lg
       }) );
     });
     thumbs = data.slides.length;
+    slide.push( $("<div/>").addClass("badge").text(thumbs) );
   }else{
-    slide.push( $("<img/>").attr("src", data.thumbnail) );
+    slide.push( $("<img/>").attr({
+      "src": data.thumbnail,
+      "data-thumbnail_lg": data.thumbnail_lg
+    }) );
   }
   slide.push( $("<span/>").addClass("title").text(data.title) );
   slide.push( $("<span/>").addClass("desc").text(data.description) );

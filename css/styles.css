@@ -149,11 +149,22 @@ div.slide {
 div.slide span {
   display:block;
 }
+div.slide .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  z-index: 100;
+  background-color: red;
+  font-size: 14px;
+}
 div.slide span.desc {
   display:none;
 }
 #slide_preview div.slide span.desc {
   display:block;
+}
+#slide_preview div.slide .badge {
+  display:none;
 }
 #largerPreview .modal-body {
   text-align: center;
