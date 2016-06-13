@@ -91,9 +91,6 @@ div.slides {
   font-size:30px;
   text-align: center;
 }
-div.slide {
-
-}
 .slide span.title {
   margin-top:2px;
 }
@@ -156,6 +153,9 @@ div.slide .badge {
   z-index: 100;
   background-color: red;
   font-size: 14px;
+}
+div.slide img {
+  cursor:pointer;
 }
 div.slide span.desc {
   display:none;
