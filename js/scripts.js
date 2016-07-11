@@ -96,19 +96,25 @@ $(function(){
         contents = slide.clone();
     //modal.find(".modal-body img").attr("src", $this.data("thumbnail_lg"));
     // instead of replacing img src, copy dom elems
-    contents.find("img:first").remove();
-    $.each(contents.find("img"), function(i, slide){
-      $(this).attr("src", $(this).data("thumbnail_lg"));
-    });
-    modal.find(".modal-body").html(contents);
+
     modal.find(".modal-header h4").text(slide.attr("title"));
     if(slide.hasClass("group")){
+      contents.find("img:first").remove();
+      $.each(contents.find("img"), function(i, slide){
+        $(this).attr("src", $(this).data("thumbnail_lg"));
+      });
+
+      modal.find(".modal-body").html(contents);
+
       modal.find(".modal-body .group").cycle({
-          timeout: 0,
-          reverse: false,
-          fx: "scrollHorz",
-          startingSlide: slide.find(".cycle-slide-active").data("order")
-        });
+        timeout: 0,
+        reverse: false,
+        fx: "scrollHorz",
+        startingSlide: slide.find(".cycle-slide-active").data("order")
+      });
+    }else{
+      contents.find("img:first").attr("src", $(this).data("thumbnail_lg"));
+      modal.find(".modal-body").html(contents);
     }
   });;
 
