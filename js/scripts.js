@@ -31,32 +31,45 @@ $(function(){
     var preview = $("#slide_preview"),
         slide = $(this),
         tags = "",
+        group = true,
+        subject = 'Slide',
         from_deck = slide.parents(".slideDeck");
-      $.each(slide.data("tags").split(","), function(i, tag){
-        tags += "<span>" + tag + "</span>";
+    //unload prev cycle
+    $("#largerPreview").on("hide.bs.modal", function(){
+      $(this).find(".group").cycle('destroy');
+    });
+
+    //load tags
+    $.each(slide.data("tags").split(","), function(i, tag){
+      tags += "<span>" + tag + "</span>";
+    });
+    preview.find("button").addClass("hide");
+    preview.find(".preview").html(slide.clone().append($("<div/>", {
+      "class":  "tags",
+      "html":   tags
+    })));
+    /*preview.find("button.largerView").removeClass("hide").data({
+      "thumbnail_lg": slide.data("thumbnail_lg"),
+      "title": slide.attr("title")
+    });*/
+    if(preview.find(".group").length > 0){
+      var group = true,
+          subject = 'Group';
+    }
+    if(from_deck.attr("id") == "slides"){
+      // remove button
+      if(!slide.hasClass("required")) preview.find("button.toggle").removeClass("hide").data("slide-id",slide.data("id")).addClass("remove-slide").html('<span class="glyphicon glyphicon-remove"></span> Remove ' + subject);
+    }else{
+      // add button'
+      preview.find("button.toggle").removeClass("hide").data("slide-id",slide.data("id")).addClass("add-slide").html('<span class="glyphicon glyphicon-plus"></span> Add ' + subject);
+    }
+    // preview group
+    if(group){
+      preview.find(".group").prepend('<span class="cycle-next glyphicon glyphicon-chevron-right"></span><span class="cycle-prev glyphicon glyphicon-chevron-left"></span>').cycle({
+        timeout: 0,
+        reverse: true
       });
-      preview.find("button").addClass("hide");
-      preview.find(".preview").html(slide.clone().append($("<div/>", {
-        "class":  "tags",
-        "html":   tags
-      })));
-      preview.find("button.largerView").removeClass("hide").data({
-        "thumbnail_lg": slide.data("thumbnail_lg"),
-        "title": slide.attr("title")
-      });
-      if(from_deck.attr("id") == "slides"){
-        // remove button
-        if(!slide.hasClass("required")) preview.find("button.toggle").removeClass("hide").data("slide-id",slide.data("id")).addClass("remove-slide").html('<span class="glyphicon glyphicon-remove"></span> Remove Slide');
-      }else{
-        // add button'
-        preview.find("button.toggle").removeClass("hide").data("slide-id",slide.data("id")).addClass("add-slide").html('<span class="glyphicon glyphicon-plus"></span> Add Slide');
-      }
-      // preview group
-      if(preview.find(".group").length > 0){
-        preview.find(".group").prepend('<span class="cycle-next glyphicon glyphicon-chevron-right"></span><span class="cycle-prev glyphicon glyphicon-chevron-left"></span>').cycle({
-          timeout: 0
-        });
-      }
+    }
   });
 
   // preview model data transfer
@@ -79,9 +92,24 @@ $(function(){
   }).on("click", ".preview img", function () {
     var $this = $(this),
         modal = $('#largerPreview').modal("show"),
-        slide = $this.closest(".slide");
-    modal.find(".modal-body img").attr("src", $this.data("thumbnail_lg"));
+        slide = $this.closest(".slide"),
+        contents = slide.clone();
+    //modal.find(".modal-body img").attr("src", $this.data("thumbnail_lg"));
+    // instead of replacing img src, copy dom elems
+    contents.find("img:first").remove();
+    $.each(contents.find("img"), function(i, slide){
+      $(this).attr("src", $(this).data("thumbnail_lg"));
+    });
+    modal.find(".modal-body").html(contents);
     modal.find(".modal-header h4").text(slide.attr("title"));
+    if(slide.hasClass("group")){
+      modal.find(".modal-body .group").cycle({
+          timeout: 0,
+          reverse: false,
+          fx: "scrollHorz",
+          startingSlide: slide.find(".cycle-slide-active").data("order")
+        });
+    }
   });;
 
 
@@ -146,6 +174,10 @@ $(function(){
   /*$( "#slide_preview" ).resizable({
     handles:  "e, w"
   });*/
+
+  $("#largerPreview").on("hide.bs.modal", function(){
+    $(this).find(".group").cycle('destroy');
+  });
 
 });
 
@@ -240,7 +272,8 @@ function formatSlide(data, options){
     $.each(data.slides, function(i, s){
       slide.push( $("<img/>").attr({
         "src": s.thumbnail,
-        "style": "z-index:"+i,
+        //"style": "z-index:"+i,
+        "data-order": i,
         "data-thumbnail_lg": s.thumbnail_lg
       }) );
     });
