@@ -37,13 +37,12 @@ $(function(){
 
     if(preview.find(".group").length > 0){
       var group = true,
-          subject = 'Group',
-          the_group = preview.find(".group");
+          subject = 'Group';
     }
 
     //unload prev cycle
     $("#largerPreview").on("hide.bs.modal", function(){
-      the_group.cycle('destroy');
+      preview.find(".group").cycle('destroy');
     });
 
     //load tags
