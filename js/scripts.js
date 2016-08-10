@@ -84,11 +84,11 @@ $(function(){
   $("#slide_preview").on("click",".add-slide",function(){
     var $this = $(this);
     $("#optional_slides .slides .slide[data-id="+$this.data("slide-id")+"]").appendTo("#slides .slides");
-    $this.removeClass("add-slide").addClass("remove-slide").html('<span class="glyphicon glyphicon-remove"></span> Remove Slide');
+    $this.removeClass("add-slide").addClass("remove-slide").html('<span class="glyphicon glyphicon-remove"></span> Remove');
   }).on("click",".remove-slide",function(){
     var $this = $(this);
     $("#slides .slides .slide[data-id="+$this.data("slide-id")+"]").appendTo("#optional_slides .slides");
-    $this.removeClass("remove-slide").addClass("add-slide").html('<span class="glyphicon glyphicon-plus"></span> Add Slide');
+    $this.removeClass("remove-slide").addClass("add-slide").html('<span class="glyphicon glyphicon-plus"></span> Add');
   }).on("click", ".preview img", function () {
     var $this = $(this),
         modal = $('#largerPreview').modal("show"),
@@ -237,6 +237,8 @@ function loadSlides(){
     slides.push( formatSlide(slide, item) );
     slide_ids.push(item.id)
   });
+
+  console.log(slide_ids);
 
 
   // get remaining slides - WILL NEED TO CHANGE
