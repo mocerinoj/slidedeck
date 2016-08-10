@@ -97,6 +97,10 @@ div.slides {
 .preview .slide.group span.title {
   margin-top: 10px;
 }
+.preview .slide.group .group_slide_title,
+.preview .slide.group .group_slide_desc{
+  text-align:center;
+}
 .slide.group {
   position: relative;
 }

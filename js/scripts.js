@@ -34,9 +34,16 @@ $(function(){
         group = true,
         subject = 'Slide',
         from_deck = slide.parents(".slideDeck");
+
+    if(preview.find(".group").length > 0){
+      var group = true,
+          subject = 'Group',
+          the_group = preview.find(".group");
+    }
+
     //unload prev cycle
     $("#largerPreview").on("hide.bs.modal", function(){
-      $(this).find(".group").cycle('destroy');
+      the_group.cycle('destroy');
     });
 
     //load tags
@@ -52,10 +59,7 @@ $(function(){
       "thumbnail_lg": slide.data("thumbnail_lg"),
       "title": slide.attr("title")
     });*/
-    if(preview.find(".group").length > 0){
-      var group = true,
-          subject = 'Group';
-    }
+
     if(from_deck.attr("id") == "slides"){
       // remove button
       if(!slide.hasClass("required")) preview.find("button.toggle").removeClass("hide").data("slide-id",slide.data("id")).addClass("remove-slide").html('<span class="glyphicon glyphicon-remove"></span> Remove ' + subject);
@@ -68,7 +72,10 @@ $(function(){
       preview.find(".group").prepend('<span class="cycle-next glyphicon glyphicon-chevron-right"></span><span class="cycle-prev glyphicon glyphicon-chevron-left"></span>').cycle({
         timeout: 0,
         reverse: true
-      });
+      }).prepend('<span class="group_slide_title"></span><span class="group_slide_desc"></span>').on("cycle-update-view", function(e, optionHash, slideOptionsHash, currentSlideEl){
+        $(this).find(".group_slide_title").text($(currentSlideEl).attr("title"));
+        $(this).find(".group_slide_desc").text($(currentSlideEl).data("desc"));
+      });;
     }
   });
 
@@ -281,8 +288,11 @@ function formatSlide(data, options){
       slide.push( $("<img/>").attr({
         "src": s.thumbnail,
         //"style": "z-index:"+i,
-        "data-order": i,
-        "data-thumbnail_lg": s.thumbnail_lg
+        "data-order":         i,
+        "data-thumbnail_lg":  s.thumbnail_lg,
+        "title":              s.title,
+        //"data-tags":          ($.isArray(s.tags) ? s.tags.join(",") : s.tags),
+        "data-desc":          s.description
       }) );
     });
     thumbs = data.slides.length;

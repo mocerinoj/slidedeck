@@ -116,14 +116,14 @@
           "title": "Slide 7",
           "thumbnail": "http://placehold.it/350x250/000000/ffffff",
           "thumbnail_lg": "http://placehold.it/550x450/000000/ffffff",
-          "description": "This is a great slide!"
+          "description": "This is the first slide in the first group"
         },
         {
           "id": 5,
           "title": "Slide 5",
           "thumbnail": "http://placehold.it/350x250/FF9900/fffff",
           "thumbnail_lg": "http://placehold.it/550x450/FF9900/fffff",
-          "description": "This is a great slide!"
+          "description": "This is the second slide in the second group"
         }
       ]
     },
