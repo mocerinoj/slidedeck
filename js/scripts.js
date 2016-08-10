@@ -75,7 +75,7 @@ $(function(){
       }).prepend('<span class="group_slide_title"></span><span class="group_slide_desc"></span>').on("cycle-update-view", function(e, optionHash, slideOptionsHash, currentSlideEl){
         $(this).find(".group_slide_title").text($(currentSlideEl).attr("title"));
         $(this).find(".group_slide_desc").text($(currentSlideEl).data("desc"));
-      });;
+      });
     }
   });
 
@@ -118,6 +118,9 @@ $(function(){
         reverse: false,
         fx: "scrollHorz",
         startingSlide: slide.find(".cycle-slide-active").data("order")
+      }).on("cycle-update-view", function(e, optionHash, slideOptionsHash, currentSlideEl){
+        $(this).find(".group_slide_title").text($(currentSlideEl).attr("title"));
+        $(this).find(".group_slide_desc").text($(currentSlideEl).data("desc"));
       });
     }else{
       contents.find("img:first").attr("src", $(this).data("thumbnail_lg"));
